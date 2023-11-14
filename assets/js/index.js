@@ -15,7 +15,7 @@ const isAdult = function (age) {
   if (age !== age || typeof age !== 'number') {
     return null;
   }
-  return age > 18;
+  return age >= 18;
 };
 
 const calculator = function (num1, num2, symbol) {
@@ -48,7 +48,7 @@ const showIsAdult = function (num) {
   } else if (num !== null) {
     console.log('young');
   } else {
-    console.log(num);
+    console.log('Incorrect input( Write a real number ): ' + num);
   }
 };
 
