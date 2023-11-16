@@ -42,6 +42,31 @@ const calculator = function (num1, num2, symbol) {
   }
 };
 
+const calculatorSwitch = function (num1, num2, symbol) {
+  if (num1 !== num1 || typeof num1 !== 'number') {
+    return null;
+  }
+  if (num2 !== num2 || typeof num2 !== 'number') {
+    return null;
+  }
+  if (typeof symbol !== 'string') {
+    return null;
+  }
+
+  switch (symbol) {
+    case '+':
+      return num1 + num2;
+    case '-':
+      return num1 - num2;
+    case '*':
+      return num1 * num2;
+    case '/':
+      return num1 / num2;
+    default:
+      return null;
+  }
+};
+
 const showIsAdult = function (num) {
   if (num) {
     console.log('adult');
@@ -75,3 +100,10 @@ console.log(calculator(6, 3, '*'));
 console.log(calculator(6, 3, '/'));
 console.log(calculator(6, '3', '+'));
 console.log(calculator(nan, 3, '+'));
+
+console.log(calculatorSwitch(6, 3, '+'));
+console.log(calculatorSwitch(6, 3, '-'));
+console.log(calculatorSwitch(6, 3, '*'));
+console.log(calculatorSwitch(6, 3, '/'));
+console.log(calculatorSwitch(6, '3', '+'));
+console.log(calculatorSwitch(nan, 3, '+'));
