@@ -25,31 +25,31 @@ console.log('summ Of 100 Elemets = ' + summOf100Elemets3);
 
 // =============================
 
-// Ex2.1
-let userAns;
-while (userAns !== 2 + 2 * 2) {
-  userAns = +prompt('2.1 What is (2+2*2)?');
-}
-alert('2.1 Congratulations you are right!!! (2+2*2) = ' + (2 + 2 * 2));
+// // Ex2.1
+// let userAns;
+// while (userAns !== 2 + 2 * 2) {
+//   userAns = +prompt('2.1 What is (2+2*2)?');
+// }
+// alert('2.1 Congratulations you are right!!! (2+2*2) = ' + (2 + 2 * 2));
 
-// Ex2.2
-let userAns2;
-do {
-  userAns2 = +prompt('2.2 What is (2+2*2)?');
-} while (userAns2 !== 2 + 2 * 2);
-alert('2.2 Congratulations you are right!!! (2+2*2) = ' + (2 + 2 * 2));
+// // Ex2.2
+// let userAns2;
+// do {
+//   userAns2 = +prompt('2.2 What is (2+2*2)?');
+// } while (userAns2 !== 2 + 2 * 2);
+// alert('2.2 Congratulations you are right!!! (2+2*2) = ' + (2 + 2 * 2));
 
-// Ex2.3
-let userAns3;
-for (let i = 0; i < 5; i++) {
-  userAns3 = +prompt('2.3 What is (2+2*2)? Try:(' + (i + 1) + '/5)');
-  if (+userAns3 === 2 + 2 * 2) break;
-}
-alert(
-  +userAns3 === 2 + 2 * 2
-    ? '2.3 Congratulations you are right!!! (2+2*2) = ' + (2 + 2 * 2)
-    : 'Sorry the answer was ' + (2 + 2 * 2)
-);
+// // Ex2.3
+// let userAns3;
+// for (let i = 0; i < 5; i++) {
+//   userAns3 = +prompt('2.3 What is (2+2*2)? Try:(' + (i + 1) + '/5)');
+//   if (+userAns3 === 2 + 2 * 2) break;
+// }
+// alert(
+//   +userAns3 === 2 + 2 * 2
+//     ? '2.3 Congratulations you are right!!! (2+2*2) = ' + (2 + 2 * 2)
+//     : 'Sorry the answer was ' + (2 + 2 * 2)
+// );
 
 // Ex3
 const myPow = function (number, power) {
@@ -72,7 +72,7 @@ const factorial = function (number) {
   if (number !== number || typeof number !== 'number' || number < 0)
     return null;
   if (number === 0) return 1;
-  let ans=1;
+  let ans = 1;
   for (let i = number; i > 0; i--) {
     ans *= i;
   }
@@ -82,3 +82,22 @@ const factorial = function (number) {
 console.log(factorial(-2));
 console.log(factorial(2));
 console.log(factorial(3));
+
+// EXTRA 2
+const isPrimeNum = function (number) {
+  if (number !== number || typeof number !== 'number' || number < 0)
+    return null;
+
+  for (let i = 2; i < number; i++) {
+    if (number % i === 0) return false;
+  }
+  return true;
+};
+
+
+
+console.log(isPrimeNum(3)); //t
+console.log(isPrimeNum(10)); //f
+console.log(isPrimeNum(93)); //f
+console.log(isPrimeNum(31)); //t
+console.log(isPrimeNum(229)); //t
