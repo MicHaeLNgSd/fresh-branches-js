@@ -66,3 +66,19 @@ const myPow = function (number, power) {
 console.log(myPow(2, 3));
 console.log(myPow(5, 4));
 console.log(myPow(2, -3));
+
+// EXTRA
+const factorial = function (number) {
+  if (number !== number || typeof number !== 'number' || number < 0)
+    return null;
+  if (number === 0) return 1;
+  let ans=1;
+  for (let i = number; i > 0; i--) {
+    ans *= i;
+  }
+  return ans;
+};
+
+console.log(factorial(-2));
+console.log(factorial(2));
+console.log(factorial(3));
