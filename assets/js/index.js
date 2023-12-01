@@ -53,12 +53,19 @@
 //   return newArr.join(' ');
 // }
 
-function getCapitalized(str) {
-  return str
+// function getCapitalized(str) {
+//   return str
+//     .split(' ')
+//     .map((el) => el.charAt(0).toUpperCase() + el.slice(1))
+//     .join(' ');
+// }
+
+const getCapitalized = (str) =>
+  str
     .split(' ')
     .map((el) => el.charAt(0).toUpperCase() + el.slice(1))
     .join(' ');
-}
+
 // console.log(getCapitalized('   lorem   impus    '));
 
 //====================================
@@ -82,9 +89,67 @@ function getCapitalized(str) {
 //   return str.split('').filter((el) => arrOfSearchItems.includes(el)).length;
 // }
 
-function amountOfVowel(str, arrOfSearchItems) {
-  return str.split('').filter((el) => arrOfSearchItems.includes(el)).length;
-}
+const amountOfVowel = (str, arrOfSearchItems) =>
+  str.split('').filter((el) => arrOfSearchItems.includes(el)).length;
 
 const vowels = ['a', 'e', 'i', 'o', 'u'];
-console.log(amountOfVowel('liiorem imous', vowels)); // 7
+// console.log(amountOfVowel('liiorem imous', vowels)); // 7
+
+const shop = {
+  name: 'Roz',
+  products: [
+    { name: 'prod1', price: 5000, quantity: 0 },
+    { name: 'prod2', price: 1000, quantity: 1234 },
+    { name: 'prod3', price: 200, quantity: 2 },
+    { name: 'prod4', price: 21222, quantity: 15 },
+    { name: 'prod5', price: 76800, quantity: 12112 },
+  ],
+  displayProducts: function () {
+    this.products.forEach(function (product) {
+      console.log(this);
+      console.log(
+        `Shop ${this.name} has product ${product.name} has price ${product.price} and quantity ${product.quantity}`
+      );
+    });
+  },
+  displayProductsV1: function () {
+    let that = this;
+    this.products.forEach(function (product, that) {
+      console.log(
+        `Shop ${that.name} has product ${product.name} has price ${product.price} and quantity ${product.quantity}`
+      );
+    });
+  },
+  displayProductsV2: function () {
+    function display(product) {
+      console.log(
+        `Shop ${this.name} has product ${product.name} has price ${product.price} and quantity ${product.quantity}`
+      );
+    }
+    const bindedCorrectThisFunc = display.bind(this);
+    this.products.forEach(bindedCorrectThisFunc);
+  },
+  displayProductsV3: function () {
+    this.products.forEach((product) => {
+      console.log(
+        `Shop ${this.name} has product ${product.name} has price ${product.price} and quantity ${product.quantity}`
+      );
+    });
+  },
+};
+
+const haveArg = function () {
+  console.log(arguments);
+};
+
+const doesNotHaveArg = () => {
+  console.log(arguments);
+};
+
+const sumOfAnyNumbers = (...restNumbers) => {
+  let result = 0;
+  restNumbers.forEach((el) => {
+    result += el;
+  });
+  return result
+};
