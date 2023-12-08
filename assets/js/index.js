@@ -1,7 +1,7 @@
 'use strict';
 
 const arr = [];
-fillArrByStr(arr,10)
+fillArrByStr(arr, 10);
 console.log(arr);
 
 for (let i = 0; i < arr.length; i++) {
@@ -10,50 +10,62 @@ for (let i = 0; i < arr.length; i++) {
 
 console.log('==============');
 
-arr.forEach((elem,i)=> {
-  console.log(elem + ' elem2'+i);
+arr.forEach((elem, i) => {
+  console.log(elem + ' elem2' + i);
 });
 
 console.log('==============');
 
+let forEach = arr.forEach(function printArr(elem, i) {
+  console.log(elem ** 4, '[' + i + ']');
+  return 'test';
+});
+console.log('forEach', forEach);
 
-let forEach = arr.forEach(function printArr(elem, i){
-  console.log(elem ** 4, '['+i+']');
-  return 'test'
-})
-console.log('forEach',forEach);
+let map = arr.map(function printArr(elem, i) {
+  console.log(elem ** 4, '[' + i + ']');
+  return elem ** 4;
+});
+console.log('map', map);
 
-let map = arr.map(function printArr(elem, i){
-  console.log(elem ** 4, '['+i+']');
-  return elem ** 4
-})
-console.log('map',map);
+let filterNo2 = arr.filter(function cb(elem) {
+  return elem !== '2';
+});
+console.log('filterNo2', filterNo2);
 
-let filterNo2 = arr.filter(function cb(elem){
-  return elem !== '2'
-})
-console.log('filterNo2',filterNo2);
+console.log(
+  'some2',
+  filterNo2.some((el) => {
+    return el === '2';
+  })
+);
 
-console.log('some2',filterNo2.some((el)=>{
-  return el === '2'
-}));
+console.log(
+  'everyIsStr',
+  arr.some((el) => {
+    return typeof el === 'string';
+  })
+);
 
-console.log('everyIsStr', arr.some((el)=>{
-  return typeof el === 'string'
-}));
+console.log(
+  'find(first)4',
+  arr.find((el) => {
+    return el === '4';
+  })
+);
+console.log(
+  'findIndex(first)4',
+  arr.findIndex((el) => {
+    return el === '4';
+  })
+);
 
-console.log('find(first)4', arr.find((el)=>{
-  return el === '4'
-}));
-console.log('findIndex(first)4', arr.findIndex((el)=>{
-  return el === '4'
-}));
-
-console.log('findIndex(first)4', arr.findIndex((el)=>{
-  return el === '4'
-}));
-
-
+console.log(
+  'findIndex(first)4',
+  arr.findIndex((el) => {
+    return el === '4';
+  })
+);
 
 // const newArr = [1, 2, 3, [10, 20, 30, [100, [1000]]], 4];
 
@@ -68,21 +80,15 @@ console.log('findIndex(first)4', arr.findIndex((el)=>{
 // const fullArr = firstPartArr.concat(10,secondPartArr)
 // console.log(fullArr);
 
-
-
-
-
-
-
-function fillArrByStr (arr, amount, strEnd = '') {
+function fillArrByStr(arr, amount, strEnd = '') {
   if (!Array.isArray(arr)) return null;
   if (amount !== amount || typeof amount !== 'number') return null;
   for (let i = 0; i < amount; i++) {
-    arr[i] = i +1+ '' + strEnd;
+    arr[i] = i + 1 + '' + strEnd;
   }
   arr.splice(amount);
   return arr;
-};
+}
 
 // const badArr1 = {};
 // const badArr2 = NaN;
@@ -133,3 +139,12 @@ function fillArrByStr (arr, amount, strEnd = '') {
 // arr.push('1')
 // arr.unshift('0')
 // console.log(arr,arr.shift());
+
+const nums3 = [1, 2, 3, 4, 5];
+const nums4 = nums3.map((el) => (el % 2 === 0 ? el ** 5 : el * 3));
+
+//reduce - перетворює масив на конкретне значення
+const nums5 = [10, 20, 56, -4];
+const nums6 = nums5.reduce((acc,num,i,arr)=>{
+  return acc += num
+})
