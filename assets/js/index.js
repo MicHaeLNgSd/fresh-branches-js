@@ -1,89 +1,71 @@
 'use strict';
 
-function OldUser(firstName, lastName, age) {
-  this.firstName = firstName;
-  this.lastName = lastName;
-  this.age = age;
-}
-const userProto = {
-  getFullName: function () {
-    return `${this.firstName} ${this.lastName}`;
-  },
-};
-OldUser.prototype = userProto;
-
-const user1 = new OldUser('John', 'Doe', 42);
-// user1.__proto__ = userProto;
-const user2 = new OldUser('John', 'Doe', 42);
-
-//==============================
-
-class NewUser {
-  constructor(firstName, lastName, age) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.age = age;
-  }
-
-  getFullName() {
-    return `${this.firstName} ${this.lastName}`;
-  }
-}
-
-const user3 = new NewUser('Mike', 'H', 20);
-const user4 = new NewUser('Karat', 'G', 25);
-
-//==========================
-
-class House {
-  constructor(numOfFloors = 1, address = 'unknow_address', style = 'modern') {
-    this.numOfFloors = numOfFloors;
-    this.adress = address;
-    this.style = style;
-  }
-
-  getHouseDate() {
-    return `House data address: ${this.adress}, floors: ${this.floors}, style: ${this.style}`;
-  }
-}
-
-const house1 = new House(3, 'swr in ZP');
-
-//==============
-
-class User {
-  constructor(firstName, lastName, isMale, age, height) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.isMale = isMale;
-    this.age = age;
-    this.height = height;
-  }
-  getInfo() {
-    return `${this.firstName} ${this.lastName} is a ${
-      this.isMale ? 'male ' : 'female s'
-    }he is ${this.age} and ${this.height} sm height`;
-  }
-  isAdult() {
-    return this.age >= 18;
-  }
-}
-
-const user5 = new User('Mike', 'H', true, 20, 180);
-const user6 = new User('Ann', 'G', false, 16, 160);
-
-//===============
-
-class Product {
-  constructor(name, price, amount, isForAdult){
+class Employee {
+  constructor(name, surname, isMale, payRate, hoursPerMonth) {
     this.name = name;
-    this.price = price;
-    this.amount = amount;
-    this.isForAdult = isForAdult;
+    this.surname = surname;
+    this.isMale = isMale;
+    this.payRate = payRate;
+    this.hoursPerMonth = hoursPerMonth;
   }
-  getFullPrice(){
-    return this.price * this.amount;
+
+  getPaycheck() {
+    return this._payRate * this._hoursPerMonth;
+  }
+
+  get name() {
+    return this._name;
+  }
+  get surname() {
+    return this._surname;
+  }
+  get isMale() {
+    return this._isMale;
+  }
+  get payRate() {
+    return this._payRate;
+  }
+  get hoursPerMonth() {
+    return this._hoursPerMonth;
+  }
+
+  set name(newName) {
+    if (typeof newName !== 'string' || newName.trim() === '') {
+      throw new SyntaxError('Name must be a normal String');
+    }
+    this._name = newName;
+  }
+  set surname(newSurname) {
+    if (typeof newSurname !== 'string' || newSurname.trim() === '') {
+      throw new SyntaxError('Surname must be a normal String');
+    }
+    this._surname = newSurname;
+  }
+  set isMale(newIsMale) {
+    if (typeof newIsMale !== 'boolean') {
+      throw new SyntaxError('IsMale must be a Boolean');
+    }
+    this._isMale = newIsMale;
+  }
+  set payRate(newPayRate) {
+    if (typeof newPayRate !== 'number' || isNaN(newPayRate)) {
+      throw new SyntaxError('PayRate must be a normal Number');
+    }
+    this._payRate = newPayRate;
+  }
+  set hoursPerMonth(newHoursPerMonth) {
+    if (typeof newHoursPerMonth !== 'number' || isNaN(newHoursPerMonth)) {
+      throw new SyntaxError('HoursPerMonth must be a normal Number');
+    }
+    this._hoursPerMonth = newHoursPerMonth;
+  }
+
+  get fullName() {
+    return `${this.name} ${this.surname}`;
+  }
+  set fullName(newFullName) {
+    [this.name, this.surname] = newFullName.split(' ');
   }
 }
 
-const bottle = new Product('水', 40, 200, false)
+const enp1 = new Employee('John', 'Weak', true, 500, 1000);
