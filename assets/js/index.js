@@ -1,6 +1,11 @@
 'use strict';
 
 class Employee {
+  #name
+  #surname
+  #isMale
+  #payRate
+  #hoursPerMonth
   constructor(name, surname, isMale, payRate, hoursPerMonth) {
     this.name = name;
     this.surname = surname;
@@ -10,54 +15,54 @@ class Employee {
   }
 
   getPaycheck() {
-    return this._payRate * this._hoursPerMonth;
+    return this.#payRate * this.#hoursPerMonth;
   }
 
   get name() {
-    return this._name;
+    return this.#name;
   }
   get surname() {
-    return this._surname;
+    return this.#surname;
   }
   get isMale() {
-    return this._isMale;
+    return this.#isMale;
   }
   get payRate() {
-    return this._payRate;
+    return this.#payRate;
   }
   get hoursPerMonth() {
-    return this._hoursPerMonth;
+    return this.#hoursPerMonth;
   }
 
   set name(newName) {
     if (typeof newName !== 'string' || newName.trim() === '') {
       throw new TypeError('Name must be a normal String');
     }
-    this._name = newName;
+    this.#name = newName;
   }
   set surname(newSurname) {
     if (typeof newSurname !== 'string' || newSurname.trim() === '') {
       throw new TypeError('Surname must be a normal String');
     }
-    this._surname = newSurname;
+    this.#surname = newSurname;
   }
   set isMale(newIsMale) {
     if (typeof newIsMale !== 'boolean') {
       throw new TypeError('IsMale must be a Boolean');
     }
-    this._isMale = newIsMale;
+    this.#isMale = newIsMale;
   }
   set payRate(newPayRate) {
     if (typeof newPayRate !== 'number' || isNaN(newPayRate)) {
       throw new TypeError('PayRate must be a normal Number');
     }
-    this._payRate = newPayRate;
+    this.#payRate = newPayRate;
   }
   set hoursPerMonth(newHoursPerMonth) {
     if (typeof newHoursPerMonth !== 'number' || isNaN(newHoursPerMonth)) {
       throw new TypeError('HoursPerMonth must be a normal Number');
     }
-    this._hoursPerMonth = newHoursPerMonth;
+    this.#hoursPerMonth = newHoursPerMonth;
   }
 
   get fullName() {
@@ -69,3 +74,6 @@ class Employee {
 }
 
 const enp1 = new Employee('John', 'Weak', true, 500, 1000);
+console.log(enp1.name);
+console.log(enp1._name);
+// console.log(enp1.#name); //SyntaxError
