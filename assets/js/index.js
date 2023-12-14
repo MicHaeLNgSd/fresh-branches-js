@@ -31,31 +31,31 @@ class Employee {
 
   set name(newName) {
     if (typeof newName !== 'string' || newName.trim() === '') {
-      throw new SyntaxError('Name must be a normal String');
+      throw new TypeError('Name must be a normal String');
     }
     this._name = newName;
   }
   set surname(newSurname) {
     if (typeof newSurname !== 'string' || newSurname.trim() === '') {
-      throw new SyntaxError('Surname must be a normal String');
+      throw new TypeError('Surname must be a normal String');
     }
     this._surname = newSurname;
   }
   set isMale(newIsMale) {
     if (typeof newIsMale !== 'boolean') {
-      throw new SyntaxError('IsMale must be a Boolean');
+      throw new TypeError('IsMale must be a Boolean');
     }
     this._isMale = newIsMale;
   }
   set payRate(newPayRate) {
     if (typeof newPayRate !== 'number' || isNaN(newPayRate)) {
-      throw new SyntaxError('PayRate must be a normal Number');
+      throw new TypeError('PayRate must be a normal Number');
     }
     this._payRate = newPayRate;
   }
   set hoursPerMonth(newHoursPerMonth) {
     if (typeof newHoursPerMonth !== 'number' || isNaN(newHoursPerMonth)) {
-      throw new SyntaxError('HoursPerMonth must be a normal Number');
+      throw new TypeError('HoursPerMonth must be a normal Number');
     }
     this._hoursPerMonth = newHoursPerMonth;
   }
