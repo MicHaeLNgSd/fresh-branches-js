@@ -131,18 +131,18 @@ class DoubleLinkedList {
     if (this.length === 1) {
       this.head = null;
       this.tail = null;
-    }else{
+    } else {
       firstNode.next = null;
       postFirstNode.prev = null;
       this.head = postFirstNode;
     }
 
     this.length--;
-    return firstNode
+    return firstNode;
   }
 
   unshift(...data) {
-    data.forEach(el=>{
+    data.forEach((el) => {
       const newNode = new ListNode(el);
 
       if (this.length === 0) {
@@ -153,21 +153,62 @@ class DoubleLinkedList {
         this.head.prev = newNode;
         this.head = newNode;
       }
-  
+
       this.length++;
-    })
+    });
 
     return this.length;
   }
 
-  search(data){
+  [Symbol.iterator]() {
+    return new DLLIterator(this);
+  }
+
+  search(data) {
     let current = this.head;
     for (let i = 0; i < this.length; i++) {
-      if(current.data === data) return current
-      current = current.next
+      if (current.data === data) return current;
+      current = current.next;
     }
-    return null
+    return null;
+  }
+}
+
+class DLLIterator {
+  constructor(list) {
+    this.list = list;
+    this.currentNode = null;
+  }
+  next() {
+    this.currentNode = this.currentNode
+      ? this.currentNode.next
+      : this.list.head;
+    return {
+      done: !this.currentNode,
+      value: this.currentNode,
+    };
   }
 }
 
 const list1 = new DoubleLinkedList('test');
+
+// list1[Symbol.iterator] = function () {
+//   let currentNode = null;
+//   return {
+//     next: function () {
+//       currentNode = currentNode ? currentNode.next : list1.head;
+//       return {
+//         done: !currentNode,
+//         value: currentNode,
+//       };
+//     },
+//   };
+// };
+
+list1.push(10);
+list1.push(8);
+list1.push(6);
+
+for (const el of list1) {
+  console.log('el :>> ', el);
+}
